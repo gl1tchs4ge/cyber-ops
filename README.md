@@ -44,8 +44,6 @@ Hands-on cybersecurity practice:
 - `blue-team/` → defensive security concepts
 - `methodology/` → structured approaches and workflows
 
-### `writeups/`
-Clean, structured documentation of completed exercises and machines.
 
 ### `labs/`
 Future and experimental environments:
