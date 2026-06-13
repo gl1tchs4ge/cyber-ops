@@ -15,6 +15,7 @@ This repo focuses on hands-on learning through platforms like Hack The Box, stru
   - Linux and system administration
   - Networking fundamentals
   - Homelab infrastructure and experimentation
+  - Cybersecurity and systems-focused learner building hands-on experience in offensive security, Linux systems, and cv network-level understanding. My focus is on understanding how systems behave under real conditions, not just theory, through structured labs, reverse engineering practice, and infrastructure experimentation.
 
 ---
 
