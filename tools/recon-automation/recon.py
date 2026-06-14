@@ -1,58 +1,43 @@
-import subprocess 
+import socket
+import threading
 
+## Needed Variables
+ip = input("What IP do u want to scan?")
+open_ports = []
+lock = threading.Lock()
 
-# Info Gathering/Defining Variables
-target = input("Give me the IP address of the target")
-scan = input("What type of scan do u want? \
-1 = fast scan (scan first 100 ports + version + service \
-2 = full scan (all ports + threading + version + service" )
-
-# Main command execution funcition
-def run_command(cmd):
-    result = subprocess.run(
-        cmd,
-        capture_output=True,
-        text=True,
-        timeout=30
-
-    )
+## Defining the main scanning function
+def scan_port(ip, port):
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(1)
+    result = sock.connect_ex((ip, port))
         
-    return {
-        "stdout": result.stdout,
-        "stderr": result.stderr,
-        "return_code": result.returncode
-    }
+    if result == 0:
+        with lock:
+            open_ports.append(port)
 
-# Defining Scan type 
-def fast_scan(target):
-    cmd = ["nmap", "-sS", "-sV", "-sC", "-T5", "-F", target]
-    
-    result = run_command(cmd)
-    
-    print("== Fast Scan Result ==")
-    print(result["stdout"])
-
-    return result
+    sock.close()
 
 
-def full_scan(target):
-    cmd = ["nmap", "-sS", "-sV", "-sC", "-T5", "-p-", target]
+## Adding the Threading function
+def scan(ip):
+    threads = []
 
-    result = run_command(cmd)
+    for port in range(1, 1025): 
+        thread = threading.Thread(
+        target=scan_port,
+        args=(ip,port)
+    )
 
-    print("== Full Scan Result ==")
-    print(result["stdout"])
+        thread.start()
+        threads.append(thread)
 
-    return result
+    for thread in threads:
+        thread.join()
 
-# Scanning
+## Calling the scanning + thread function         
+scan(ip)
 
-if scan == "1":
-    fast_scan(target)
-
-elif scan == "2":
-    full_scan(target)
-
-else:
-    print("Invalid option")
-
+## Final Output 
+print("\nOpen ports found:")
+print(sorted(open_ports))
