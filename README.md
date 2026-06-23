@@ -40,13 +40,11 @@ Technical knowledge base and reference material:
 
 ### `Writeups/`
 Hands-on cybersecurity practice:
-- `htb/` → Hack The Box machines and challenges
-- `overthewire/` → Overthewire Wargames
-- `pentesting/` → general penetration testing techniques
-- `blue-team/` → defensive security concepts
-- `methodology/` → structured approaches and workflows
+- `HTB/` → Hack The Box machines and > challenges 
+- `Overthewire/` → Overthewire Wargames
+- `THM/` →   Try Hack Me machines and challenges
 
-
+ 
 ### `Labs/`
 Future and experimental environments:
 - vulnerable machine setups
