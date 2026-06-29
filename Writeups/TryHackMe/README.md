@@ -180,4 +180,4 @@ Started combining:
 
 Completing TryHackMe rooms helped reinforce a structured cybersecurity workflow and a stronger offensive security mindset.
 
-Compiled and documented by W1seGuy
+
